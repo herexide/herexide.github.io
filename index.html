@@ -1,0 +1,913 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Проверка состава по фото в Telegram | Анализ косметики и продуктов</title>
+    <meta
+      name="description"
+      content="Проверяйте состав косметики, продуктов, детского питания и кормов по фото. Telegram-бот распознаёт ингредиенты, объясняет риски и ставит оценку за 10 секунд."
+    />
+    <meta
+      name="robots"
+      content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+    />
+    <link rel="canonical" href="https://example.com/" />
+    <link rel="icon" type="image/png" href="./favicon.png" sizes="96x96" />
+    <link rel="apple-touch-icon" href="./favicon.png" />
+    <meta property="og:locale" content="ru_RU" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Проверка состава" />
+    <meta
+      property="og:title"
+      content="Проверка состава по фото в Telegram | Анализ косметики и продуктов"
+    />
+    <meta
+      property="og:description"
+      content="Проверяйте состав косметики, продуктов, детского питания и кормов по фото. Telegram-бот распознаёт ингредиенты, объясняет риски и ставит оценку за 10 секунд."
+    />
+    <meta property="og:url" content="https://example.com/" />
+    <meta property="og:image" content="https://example.com/share-image.png" />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1052" />
+    <meta property="og:image:height" content="1960" />
+    <meta
+      property="og:image:alt"
+      content="Скриншот Telegram-бота для проверки состава косметики и продуктов"
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="Проверка состава по фото в Telegram | Анализ косметики и продуктов"
+    />
+    <meta
+      name="twitter:description"
+      content="Проверяйте состав косметики, продуктов, детского питания и кормов по фото. Telegram-бот распознаёт ингредиенты, объясняет риски и ставит оценку за 10 секунд."
+    />
+    <meta name="twitter:image" content="https://example.com/share-image.png" />
+    <meta
+      name="twitter:image:alt"
+      content="Скриншот Telegram-бота для проверки состава косметики и продуктов"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Oranienbaum&display=swap"
+    />
+    <link
+      rel="preload"
+      as="image"
+      href="./graphics/images/hero-screen.avif"
+      type="image/avif"
+      fetchpriority="high"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#mainContent">Перейти к основному содержимому</a>
+    <div class="site-header-band">
+      <header class="site-header">
+        <div class="site-header__shell">
+          <a class="site-header__brand" href="#hero">
+            <span class="telegram-mark" aria-hidden="true">
+              <span class="telegram-mark__disc">
+                <img
+                  class="telegram-mark__icon"
+                  src="./graphics/icons/telegram-logo.png"
+                  alt=""
+                  width="42"
+                  height="42"
+                />
+              </span>
+            </span>
+            <span class="site-header__brand-copy">
+              <span class="site-header__brand-title">Проверка состава</span>
+              <span class="site-header__brand-note">Telegram-бот с быстрым разбором</span>
+            </span>
+          </a>
+
+          <button
+            class="site-header__menu-toggle"
+            type="button"
+            aria-expanded="false"
+            aria-controls="siteHeaderMenu"
+            aria-label="Открыть меню навигации"
+          >
+            <span class="site-header__menu-toggle-line"></span>
+            <span class="site-header__menu-toggle-line"></span>
+            <span class="site-header__menu-toggle-line"></span>
+          </button>
+
+          <div class="site-header__menu-panel" id="siteHeaderMenu">
+            <nav class="site-header__nav" aria-label="Основные разделы страницы">
+              <div class="site-header__nav-list">
+                <a class="site-header__link" href="#story">Как это работает</a>
+                <a class="site-header__link" href="#features">Функции</a>
+                <a class="site-header__link" href="#results">Результаты</a>
+                <a class="site-header__link" href="#audience">Для кого</a>
+                <a class="site-header__link" href="#cta">Проверить</a>
+              </div>
+            </nav>
+
+            <a
+              class="site-header__cta"
+              href="https://t.me/makeup_comp_bot"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Перейти в Telegram
+            </a>
+          </div>
+        </div>
+      </header>
+    </div>
+
+    <main class="hero-shell" id="mainContent" tabindex="-1">
+      <section class="hero" id="hero">
+        <div class="hero__content">
+          <div class="hero__kicker">Telegram AI-анализ состава</div>
+          <h1 class="hero__title">Проверьте качество состава любого продукта</h1>
+          <p class="hero__subhead">
+            Бот изучит состав косметики и продуктов питания за 10 секунд в Телеграм
+          </p>
+
+          <div class="hero__actions">
+            <a
+              class="hero__cta"
+              href="https://t.me/makeup_comp_bot"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img
+                class="hero__cta-icon"
+                src="./graphics/icons/telegram-white-icon.svg"
+                alt=""
+                width="32"
+                height="32"
+              />
+              Перейти в Телеграм
+            </a>
+          </div>
+
+        </div>
+
+        <div class="hero__visual" aria-hidden="true">
+          <div class="proof-card proof-card--score">
+            <span class="proof-card__icon-slot">
+              <picture>
+                <source srcset="./graphics/images/checkmark-icon.avif" type="image/avif" />
+                <source srcset="./graphics/images/checkmark-icon.webp" type="image/webp" />
+                <img
+                  src="./graphics/images/checkmark-icon.png"
+                  alt=""
+                  width="100"
+                  height="100"
+                  decoding="async"
+                />
+              </picture>
+            </span>
+            <div class="proof-card__copy">
+              <strong>Оценка состава от 0 до 100</strong>
+              <span>Понятный итоговый балл помогает принять решение быстрее.</span>
+            </div>
+          </div>
+
+          <div class="proof-card proof-card--speed">
+            <span class="proof-card__icon-slot">
+              <picture>
+                <source srcset="./graphics/images/bolt-icon.avif" type="image/avif" />
+                <source srcset="./graphics/images/bolt-icon.webp" type="image/webp" />
+                <img
+                  src="./graphics/images/bolt-icon.png"
+                  alt=""
+                  width="100"
+                  height="100"
+                  decoding="async"
+                />
+              </picture>
+            </span>
+            <div class="proof-card__copy">
+              <strong>Состав за 10 секунд</strong>
+              <span>Распознавание и разбор приходят почти сразу после загрузки фото.</span>
+            </div>
+          </div>
+
+          <div class="proof-card proof-card--translate">
+            <span class="proof-card__icon-slot">
+              <picture>
+                <source srcset="./graphics/images/translate-icon.avif" type="image/avif" />
+                <source srcset="./graphics/images/translate-icon.webp" type="image/webp" />
+                <img
+                  src="./graphics/images/translate-icon.png"
+                  alt=""
+                  width="100"
+                  height="100"
+                  decoding="async"
+                />
+              </picture>
+            </span>
+            <div class="proof-card__copy">
+              <strong>Перевод с любого языка</strong>
+              <span>Ингредиенты приводятся к понятному виду без ручного перевода.</span>
+            </div>
+          </div>
+
+          <div class="device-wrap" id="deviceWrap">
+            <div class="device__media-slot">
+              <picture>
+                <source srcset="./graphics/images/hero-screen.avif" type="image/avif" />
+                <source srcset="./graphics/images/hero-screen.webp" type="image/webp" />
+                <img
+                  src="./graphics/images/hero-screen.png"
+                  alt="Скриншот Telegram-бота с анализом состава"
+                  width="1052"
+                  height="1960"
+                  decoding="async"
+                  fetchpriority="high"
+                  loading="eager"
+                />
+              </picture>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="story-panel" id="story" aria-label="Преимущества проверки состава">
+        <div class="story-panel__frame">
+          <div class="story-panel__copy">
+            <p class="story-line">
+              Бот для проверки состава позволяет загрузить фото косметики или продукта
+              питания и получить подробный анализ каждого компонента<span
+                class="story-inline story-inline--score"
+                aria-hidden="true"
+                ><span class="story-inline__score-dot"></span><span>90/100</span></span
+              >
+            </p>
+
+            <p class="story-line">
+              Бот анализирует состав, проверяет безопасность ингредиентов и даёт
+              рекомендации по использованию продуктов<span
+                class="story-inline story-inline--icon story-inline--bottle"
+                aria-hidden="true"
+                ><span class="story-inline__icon-surface"
+                  ><img
+                    class="story-inline__icon"
+                    src="./graphics/icons/ink-bottle-line.svg"
+                    alt=""
+                    width="24"
+                    height="24"
+                    loading="lazy"
+                    decoding="async" /></span
+              ></span>
+            </p>
+
+            <p class="story-line">
+              Проверка состава помогает увидеть потенциальные аллергены, раздражающие
+              или комедогенные ингредиенты и оценить, подходит ли продукт вашему
+              организму<span class="story-inline story-inline--icon story-inline--biceps" aria-hidden="true"
+                ><span class="story-inline__icon-surface"
+                  ><img
+                    class="story-inline__icon"
+                    src="./graphics/icons/biceps-flexed.svg"
+                    alt=""
+                    width="24"
+                    height="24"
+                    loading="lazy"
+                    decoding="async" /></span
+              ></span>
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="features-panel" id="features" aria-labelledby="features-title">
+        <div class="features-panel__intro">
+          <h2 class="features-panel__title" id="features-title">
+            Преимущества бота
+          </h2>
+        </div>
+
+        <div class="features-grid">
+          <article class="feature-card feature-card--wide">
+            <div class="feature-card__copy">
+              <span class="feature-card__eyebrow">Распознавание по фото</span>
+              <h3 class="feature-card__title">Сканирует состав с упаковки за 10 секунд</h3>
+              <p class="feature-card__description">
+                Достаточно сфотографировать список ингредиентов на упаковке: бот
+                распознает текст, выделит важные компоненты и вернет понятный итог
+                прямо в Telegram.
+              </p>
+
+              <div class="feature-card__chips">
+                <span class="feature-chip"><strong>OCR</strong> распознаёт ингредиенты по фото</span>
+                <span class="feature-chip"><strong>Telegram</strong> работает прямо в чате</span>
+                <span class="feature-chip"><strong>10 секунд</strong> до готового разбора</span>
+              </div>
+
+              <div class="feature-card__note">
+                Подходит для косметики, продуктов, детских товаров и кормов.
+              </div>
+            </div>
+
+            <div class="feature-card__stage">
+              <div class="scan-stage" aria-hidden="true">
+
+                <div class="scan-stage__screen">
+                  <div class="scan-stage__photo-frame">
+                    <picture>
+                      <source srcset="./graphics/images/composition-image.avif" type="image/avif" />
+                      <source srcset="./graphics/images/composition-image.webp" type="image/webp" />
+                      <img
+                        class="scan-stage__image"
+                        src="./graphics/images/composition-image.png"
+                        alt="Фото состава средства для анализа"
+                        width="941"
+                        height="1252"
+                        loading="lazy"
+                        decoding="async"
+                        fetchpriority="low"
+                      />
+                    </picture>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </article>
+
+          <article class="feature-card feature-card--alternatives">
+            <div>
+              <span class="feature-card__eyebrow">Альтернативы</span>
+              <h3 class="feature-card__title feature-card__title--center">
+                Подбирает более подходящие аналоги
+              </h3>
+            </div>
+
+            <div class="feature-card__stage">
+              <div class="alts-stage" aria-hidden="true">
+                <div class="alts-stage__products">
+                  <div class="alt-product alt-product--low">
+                    <span class="alt-score alt-score--red">10/100</span>
+                    <picture>
+                      <source srcset="./graphics/images/cleaner-1.avif" type="image/avif" />
+                      <source srcset="./graphics/images/cleaner-1.webp" type="image/webp" />
+                      <img
+                        class="alt-product__image alt-product__image--cosrx"
+                        src="./graphics/images/cleaner-1.png"
+                        alt="COSRX Salicylic Acid Daily Gentle Cleanser"
+                        width="1112"
+                        height="1112"
+                        loading="lazy"
+                        decoding="async"
+                        fetchpriority="low"
+                      />
+                    </picture>
+                  </div>
+                  <div class="alt-product alt-product--high">
+                    <span class="alt-score alt-score--green">90/100</span>
+                    <picture>
+                      <source srcset="./graphics/images/cleaner-2.avif" type="image/avif" />
+                      <source srcset="./graphics/images/cleaner-2.webp" type="image/webp" />
+                      <img
+                        class="alt-product__image alt-product__image--cerave"
+                        src="./graphics/images/cleaner-2.png"
+                        alt="CeraVe Daily Moisturizing Lotion"
+                        width="1112"
+                        height="1112"
+                        loading="lazy"
+                        decoding="async"
+                        fetchpriority="low"
+                      />
+                    </picture>
+                  </div>
+                  <div class="alt-product alt-product--medium">
+                    <span class="alt-score alt-score--yellow">50/100</span>
+                    <picture>
+                      <source srcset="./graphics/images/cleaner-2-1.avif" type="image/avif" />
+                      <source srcset="./graphics/images/cleaner-2-1.webp" type="image/webp" />
+                      <img
+                        class="alt-product__image alt-product__image--avene"
+                        src="./graphics/images/cleaner-2-1.png"
+                        alt="Avène SPF 50 Cream"
+                        width="1112"
+                        height="1112"
+                        loading="lazy"
+                        decoding="async"
+                        fetchpriority="low"
+                      />
+                    </picture>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="feature-card feature-card--safety">
+            <div>
+              <span class="feature-card__eyebrow">Безопасность ингредиентов</span>
+              <h3 class="feature-card__title feature-card__title--center">
+                Показывает, что именно безопасно для вас
+              </h3>
+            </div>
+
+            <div class="feature-card__stage">
+              <div class="safety-stage" aria-hidden="true">
+                <div class="safety-stage__texture">
+                  <picture>
+                    <source srcset="./graphics/images/woman-product.avif" type="image/avif" />
+                    <source srcset="./graphics/images/woman-product.webp" type="image/webp" />
+                    <img
+                      class="safety-stage__image"
+                      src="./graphics/images/woman-product.png"
+                      alt="Продукт и портрет пользователя"
+                      width="859"
+                      height="1027"
+                      loading="lazy"
+                      decoding="async"
+                      fetchpriority="low"
+                    />
+                  </picture>
+                </div>
+                <span class="safety-stage__badge safety-stage__badge--one">
+                  Безопасно в использовании
+                </span>
+                <span class="safety-stage__badge safety-stage__badge--two">
+                  Без аллергенов
+                </span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="results-showcase" id="results" aria-labelledby="results-title">
+        <div class="results-showcase__intro">
+          <h2 class="results-showcase__title" id="results-title">
+            Как выглядит результат распознавания
+          </h2>
+        </div>
+
+        <div class="results-gallery" role="list" aria-label="Экраны результата распознавания">
+          <article class="results-shot-card results-shot-card--ingredients" role="listitem">
+            <div class="results-shot-card__header">
+              <span class="results-shot-card__number">01</span>
+              <h3 class="results-shot-card__title">Распознанный состав</h3>
+            </div>
+
+            <div class="results-shot-media" aria-hidden="true">
+              <picture>
+                <source srcset="./graphics/images/results-screen-1.avif" type="image/avif" />
+                <source srcset="./graphics/images/results-screen-1.webp" type="image/webp" />
+                <img
+                  src="./graphics/images/results-screen-1.png"
+                  alt=""
+                  width="1052"
+                  height="1960"
+                  loading="lazy"
+                  decoding="async"
+                  fetchpriority="low"
+                />
+              </picture>
+            </div>
+          </article>
+
+          <article class="results-shot-card results-shot-card--markers" role="listitem">
+            <div class="results-shot-card__header">
+              <span class="results-shot-card__number">02</span>
+              <h3 class="results-shot-card__title">Разбор ингредиентов</h3>
+            </div>
+
+            <div class="results-shot-media" aria-hidden="true">
+              <picture>
+                <source srcset="./graphics/images/telegram-bot-screen.avif" type="image/avif" />
+                <source srcset="./graphics/images/telegram-bot-screen.webp" type="image/webp" />
+                <img
+                  src="./graphics/images/telegram-bot-screen.png"
+                  alt=""
+                  width="1052"
+                  height="1960"
+                  loading="lazy"
+                  decoding="async"
+                  fetchpriority="low"
+                />
+              </picture>
+            </div>
+          </article>
+
+          <article class="results-shot-card results-shot-card--verdict" role="listitem">
+            <div class="results-shot-card__header">
+              <span class="results-shot-card__number">03</span>
+              <h3 class="results-shot-card__title">Итоговый вывод</h3>
+            </div>
+
+            <div class="results-shot-media" aria-hidden="true">
+              <picture>
+                <source srcset="./graphics/images/hero-screen.avif" type="image/avif" />
+                <source srcset="./graphics/images/hero-screen.webp" type="image/webp" />
+                <img
+                  src="./graphics/images/hero-screen.png"
+                  alt=""
+                  width="1052"
+                  height="1960"
+                  loading="lazy"
+                  decoding="async"
+                  fetchpriority="low"
+                />
+              </picture>
+            </div>
+          </article>
+        </div>
+
+        <article class="results-panel" aria-labelledby="results-demo-title">
+          <div class="results-panel__header">
+            <div class="results-panel__copy">
+              <h3 class="feature-card__title" id="results-demo-title">Пойми состав на 100%</h3>
+              <p class="results-panel__summary">
+                Состав, разбор ингредиентов, оценка и вывод в одном понятном ответе.
+              </p>
+            </div>
+
+            <div class="results-tabs" role="tablist" aria-label="Тип продукта">
+              <button
+                class="results-tab is-active"
+                id="resultsTab-cream"
+                type="button"
+                role="tab"
+                aria-selected="true"
+                aria-controls="resultsTabPanel"
+                tabindex="0"
+                data-result-tab="cream"
+              >
+                Крем для лица
+              </button>
+              <button
+                class="results-tab"
+                id="resultsTab-drink"
+                type="button"
+                role="tab"
+                aria-selected="false"
+                aria-controls="resultsTabPanel"
+                tabindex="-1"
+                data-result-tab="drink"
+              >
+                Напиток
+              </button>
+              <button
+                class="results-tab"
+                id="resultsTab-baby"
+                type="button"
+                role="tab"
+                aria-selected="false"
+                aria-controls="resultsTabPanel"
+                tabindex="-1"
+                data-result-tab="baby"
+              >
+                Детское питание
+              </button>
+              <button
+                class="results-tab"
+                id="resultsTab-pet"
+                type="button"
+                role="tab"
+                aria-selected="false"
+                aria-controls="resultsTabPanel"
+                tabindex="-1"
+                data-result-tab="pet"
+              >
+                Корм для животных
+              </button>
+            </div>
+          </div>
+
+          <div
+            class="results-panel__body"
+            id="resultsTabPanel"
+            role="tabpanel"
+            tabindex="0"
+            aria-labelledby="resultsTab-cream"
+          >
+            <div class="results-row">
+              <div class="results-row__label-wrap">
+                <span class="results-row__label">Ингредиенты</span>
+              </div>
+
+              <div class="results-row__content">
+                <p class="results-copy results-copy--ingredients" id="resultsIngredients"></p>
+                <span class="results-row__label-mobile">Ингредиенты</span>
+              </div>
+            </div>
+
+            <div class="results-row">
+              <div class="results-row__label-wrap">
+                <span class="results-row__label">Объяснение состава</span>
+              </div>
+
+              <div class="results-row__content" id="resultsExplanation"></div>
+            </div>
+
+            <div class="results-row">
+              <div class="results-row__label-wrap">
+                <span class="results-row__label">Общая оценка</span>
+              </div>
+
+              <div class="results-row__content">
+                <div class="results-score">
+                  <div class="results-score__badge" id="resultsScoreValue"></div>
+                  <div class="results-score__meta">
+                    <p class="results-score__title" id="resultsScoreTitle"></p>
+                    <p class="results-score__summary" id="resultsScoreSummary"></p>
+                  </div>
+                </div>
+                <span class="results-row__label-mobile">Общая оценка</span>
+              </div>
+            </div>
+
+            <div class="results-row">
+              <div class="results-row__label-wrap">
+                <span class="results-row__label">Вывод</span>
+              </div>
+
+              <div class="results-row__content">
+                <p class="results-copy" id="resultsConclusion"></p>
+                <span class="results-row__label-mobile">Вывод</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="results-panel__footer">
+            <p class="results-panel__footnote">
+              Полный разбор приходит в Telegram за несколько секунд.
+            </p>
+            <a
+              class="hero__cta results-panel__cta"
+              href="https://t.me/makeup_comp_bot"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Получить такой же анализ
+            </a>
+          </div>
+        </article>
+      </section>
+
+      <section class="audience-panel" id="audience" aria-labelledby="audience-title">
+        <h2 class="audience-panel__title" id="audience-title">Кому подойдет сервис</h2>
+
+        <div class="audience-panel__track">
+          <article class="audience-card">
+            <div class="audience-card__media audience-card__media--filled">
+              <picture>
+                <source srcset="./graphics/images/baby-bottle.avif" type="image/avif" />
+                <source srcset="./graphics/images/baby-bottle.webp" type="image/webp" />
+                <img
+                  src="./graphics/images/baby-bottle.png"
+                  alt="Иллюстрация бутылочки"
+                  width="138"
+                  height="138"
+                  loading="lazy"
+                  decoding="async"
+                  fetchpriority="low"
+                />
+              </picture>
+            </div>
+            <div class="audience-card__body">
+              <h3 class="audience-card__title">Заботливой маме</h3>
+              <p class="audience-card__description">
+                Чтобы проверять состав детского питания и находить безопасные продукты
+              </p>
+            </div>
+          </article>
+          
+          <article class="audience-card">
+            <div class="audience-card__media audience-card__media--filled">
+              <picture>
+                <source srcset="./graphics/images/dumbbell.avif" type="image/avif" />
+                <source srcset="./graphics/images/dumbbell.webp" type="image/webp" />
+                <img
+                  src="./graphics/images/dumbbell.png"
+                  alt="Иллюстрация гантели"
+                  width="138"
+                  height="138"
+                  loading="lazy"
+                  decoding="async"
+                  fetchpriority="low"
+                />
+              </picture>
+            </div>
+            <div class="audience-card__body">
+              <h3 class="audience-card__title">Спортсмену и ППшнику</h3>
+              <p class="audience-card__description">
+                Находить в составе продуктов и спортивном питании опасные ингредиенты
+              </p>
+            </div>
+          </article>
+
+          <article class="audience-card">
+            <div class="audience-card__media audience-card__media--filled">
+              <picture>
+                <source srcset="./graphics/images/mirror.avif" type="image/avif" />
+                <source srcset="./graphics/images/mirror.webp" type="image/webp" />
+                <img
+                  src="./graphics/images/mirror.png"
+                  alt="Иллюстрация зеркала"
+                  width="138"
+                  height="138"
+                  loading="lazy"
+                  decoding="async"
+                  fetchpriority="low"
+                />
+              </picture>
+            </div>
+            <div class="audience-card__body">
+              <h3 class="audience-card__title">Девушке или парню с проблемной кожей</h3>
+              <p class="audience-card__description">
+                Чтобы проверять состав косметики и исключать комодогенные ингредиенты
+              </p>
+            </div>
+          </article>
+
+          <article class="audience-card">
+            <div class="audience-card__media audience-card__media--filled">
+              <picture>
+                <source srcset="./graphics/images/bone.avif" type="image/avif" />
+                <source srcset="./graphics/images/bone.webp" type="image/webp" />
+                <img
+                  src="./graphics/images/bone.png"
+                  alt="Иллюстрация косточки"
+                  width="138"
+                  height="138"
+                  loading="lazy"
+                  decoding="async"
+                  fetchpriority="low"
+                />
+              </picture>
+            </div>
+            <div class="audience-card__body">
+              <h3 class="audience-card__title">Владельцу домашнего животного</h3>
+              <p class="audience-card__description">
+                Чтобы подбирать качественные корма и не переплачивать за бренд
+              </p>
+            </div>
+          </article>
+
+        </div>
+      </section>
+
+      <section class="accent-block" id="cta" aria-labelledby="accent-title">
+        <article class="accent-panel">
+          <div class="accent-panel__copy">
+            <h2 class="accent-panel__title" id="accent-title">
+              Проверяйте состав косметики и продуктов питания прямо в Телеграм
+            </h2>
+            <ul class="accent-panel__features">
+              <li class="accent-panel__feature">
+                <span
+                  class="accent-panel__icon-slot"
+                  data-icon-slot="instant"
+                  aria-hidden="true"
+                ></span>
+                <span
+                  ><strong>Мгновенно</strong> — бот всегда под рукой в Telegram, без
+                  сайтов и закладок</span
+                >
+              </li>
+              <li class="accent-panel__feature">
+                <span
+                  class="accent-panel__icon-slot"
+                  data-icon-slot="no-subscription"
+                  aria-hidden="true"
+                ></span>
+                <span
+                  ><strong>Без подписки</strong> — платите только за реальные
+                  проверки</span
+                >
+              </li>
+              <li class="accent-panel__feature">
+                <span
+                  class="accent-panel__icon-slot"
+                  data-icon-slot="price"
+                  aria-hidden="true"
+                ></span>
+                <span
+                  ><strong>Прозрачная цена</strong> — ~7 ₽ за 1 распознавание
+                  состава</span
+                >
+              </li>
+              <li class="accent-panel__feature">
+                <span
+                  class="accent-panel__icon-slot"
+                  data-icon-slot="no-overpay"
+                  aria-hidden="true"
+                ></span>
+                <span
+                  ><strong>Без переплат</strong> — не нужно платить ~2000 ₽ за
+                  подписку ради редкого использования</span
+                >
+              </li>
+            </ul>
+            <a
+              class="hero__cta accent-panel__cta"
+              href="https://t.me/makeup_comp_bot"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Открыть бота в Telegram
+            </a>
+          </div>
+
+          <div class="accent-stage__phone" aria-hidden="true">
+            <div class="accent-stage__screen">
+              <div class="accent-stage__screen-slot" data-screen-slot="accent-cta">
+                <picture>
+                  <source srcset="./graphics/images/telegram-bot-screen.avif" type="image/avif" />
+                  <source srcset="./graphics/images/telegram-bot-screen.webp" type="image/webp" />
+                  <img
+                    src="./graphics/images/telegram-bot-screen.png"
+                    alt=""
+                    width="1052"
+                    height="1960"
+                    decoding="async"
+                    fetchpriority="low"
+                    loading="lazy"
+                  />
+                </picture>
+              </div>
+            </div>
+          </div>
+        </article>
+      </section>
+    </main>
+
+    <div class="floating-telegram" aria-hidden="true">
+      <a
+        class="floating-telegram__link"
+        href="https://t.me/makeup_comp_bot"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Открыть Telegram"
+      >
+        <span class="floating-telegram__icon" aria-hidden="true">
+          <img
+            src="./graphics/icons/telegram-white-icon.svg"
+            alt=""
+            width="40"
+            height="40"
+            decoding="async"
+          />
+        </span>
+        <span class="floating-telegram__label">Перейти в Telegram</span>
+      </a>
+    </div>
+
+    <footer class="site-footer" id="footer">
+      <div class="site-footer__frame">
+        <div class="site-footer__brand-block">
+          <a
+            class="site-footer__telegram"
+            href="https://t.me/makeup_comp_bot"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Открыть Telegram"
+          >
+            <span class="telegram-mark" aria-hidden="true">
+              <span class="telegram-mark__disc">
+                <img
+                  class="telegram-mark__icon"
+                  src="./graphics/icons/telegram-logo.png"
+                  alt=""
+                  width="42"
+                  height="42"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </span>
+            </span>
+          </a>
+
+          <div class="site-footer__copy">
+            <p class="site-footer__title">Telegram-бот для проверки состава по фото</p>
+            <p class="site-footer__description">
+              Быстрый переход к анализу косметики, продуктов, детского и pet food в одном чате.
+            </p>
+          </div>
+        </div>
+
+        <nav class="site-footer__links" aria-label="Быстрые ссылки по основным разделам">
+          <a class="site-footer__link" href="#hero">Главная</a>
+          <a class="site-footer__link" href="#features">Функции</a>
+          <a class="site-footer__link" href="#results">Результаты</a>
+          <a class="site-footer__link" href="#audience">Аудитория</a>
+          <a class="site-footer__link" href="#cta">Telegram</a>
+        </nav>
+
+        <p class="site-footer__disclaimer">
+          Предложение не является публичной офертой. Сервис носит информационный характер
+          и не заменяет медицинскую, ветеринарную или иную профильную консультацию.
+        </p>
+      </div>
+    </footer>
+
+    <script src="./app.js" defer></script>
+  </body>
+</html>
