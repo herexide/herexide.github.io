@@ -165,7 +165,7 @@
   --type-display-line: 0.98;
   --type-display-tracking: -0.045em;
   --type-card-title-family: var(--font-display);
-  --type-card-title-weight: 700;
+  --type-card-title-weight: 500;
   --type-card-title-line: 1.04;
   --type-card-title-tracking: -0.04em;
   --type-body-color: var(--ink-62);
@@ -1235,15 +1235,28 @@ footer[id] {
 
 .feature-card__title {
   margin: 18px 0 0;
-  max-width: 11.5ch;
   font-size: clamp(2.2rem, 3.1vw, 3.2rem);
   line-height: 1.02;
 }
 
 .feature-card__title--center {
-  max-width: 11.5ch;
   margin: 18px auto 0;
   text-align: center;
+}
+
+.feature-card--compact {
+  grid-template-rows: auto auto auto;
+  gap: 0;
+}
+
+.feature-card--compact .feature-card__title {
+  margin-top: 18px;
+}
+
+.feature-card__visual {
+  position: relative;
+  z-index: 1;
+  margin-top: 56px;
 }
 
 .feature-card__description {
@@ -1433,7 +1446,7 @@ footer[id] {
 .feature-card--alternatives,
 .feature-card--safety {
   align-content: start;
-  gap: 20px;
+  gap: 0;
 }
 
 .feature-card--alternatives .feature-card__stage,
@@ -1448,10 +1461,8 @@ footer[id] {
 
 .alts-stage {
   position: relative;
-  display: grid;
-  align-items: end;
-  min-height: clamp(260px, 26vw, 320px);
-  padding-top: 20px;
+  min-height: 0;
+  padding-top: 0;
 }
 
 .alts-stage__products {
@@ -1459,34 +1470,37 @@ footer[id] {
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: clamp(16px, 2vw, 28px);
   align-items: end;
-  max-width: 640px;
+  max-width: 100%;
   margin: 0 auto;
-  padding: 42px 0 0;
+  padding: 0;
 }
 
 .alt-product {
   position: relative;
   display: grid;
-  place-items: end center;
-  align-items: end;
+  place-items: start center;
+  align-items: start;
   justify-items: center;
   overflow: visible;
-  padding: 0;
+  padding: 52px 0 0;
   background: transparent;
   border: 0;
   box-shadow: none;
 }
 
 .alt-product--low {
-  min-height: 158px;
+  min-height: 0;
+  --alt-image-width: 126px;
 }
 
 .alt-product--high {
-  min-height: 210px;
+  min-height: 0;
+  --alt-image-width: 168px;
 }
 
 .alt-product--medium {
-  min-height: 182px;
+  min-height: 0;
+  --alt-image-width: 144px;
 }
 
 .alt-score {
@@ -1532,33 +1546,26 @@ footer[id] {
 }
 
 .alt-product__image {
-  position: relative;
-  left: 50%;
-  bottom: auto;
-  z-index: 1;
+  position: static;
   display: block;
-  width: auto;
-  max-width: 100%;
-  max-height: none;
+  width: min(100%, var(--alt-image-width, 144px));
+  max-width: none;
+  height: auto;
   object-fit: contain;
-  transform: translateX(-50%) scale(var(--alt-image-scale, 1.72));
-  transform-origin: center bottom;
+  transform: none;
   filter: drop-shadow(0 20px 36px rgba(22, 22, 22, 0.12));
 }
 
 .alt-product__image--cosrx {
-  width: min(100%, 170px);
-  --alt-image-scale: 1.75;
+  width: min(100%, var(--alt-image-width, 126px));
 }
 
 .alt-product__image--cerave {
-  width: min(100%, 190px);
-  --alt-image-scale: 1.72;
+  width: min(100%, var(--alt-image-width, 168px));
 }
 
 .alt-product__image--avene {
-  width: min(100%, 176px);
-  --alt-image-scale: 1.75;
+  width: min(100%, var(--alt-image-width, 144px));
 }
 
 .floating-pill {
@@ -1619,10 +1626,16 @@ footer[id] {
 
 .safety-stage {
   position: relative;
-  display: grid;
-  align-items: end;
-  min-height: clamp(260px, 28vw, 320px);
-  padding-top: 18px;
+  display: flex;
+  justify-content: center;
+  min-height: 0;
+  padding: 0 0 8px;
+}
+
+.safety-stage__figure {
+  position: relative;
+  width: min(100%, 430px);
+  padding-left: 18px;
 }
 
 .safety-stage__texture {
@@ -1630,16 +1643,16 @@ footer[id] {
   display: flex;
   align-items: flex-end;
   justify-content: flex-end;
-  width: min(100%, 460px);
-  height: clamp(236px, 26vw, 300px);
+  width: min(100%, 332px);
+  height: auto;
   margin: 0 0 0 auto;
 }
 
 .safety-stage__image {
   display: block;
-  width: auto;
-  max-width: 100%;
-  height: 100%;
+  width: 100%;
+  max-width: none;
+  height: auto;
   object-fit: contain;
   object-position: right bottom;
   filter: drop-shadow(0 22px 40px rgba(22, 22, 22, 0.12));
@@ -1677,12 +1690,12 @@ footer[id] {
 }
 
 .safety-stage__badge--one {
-  top: 34px;
+  top: 82px;
   animation: float-card-a 10.5s ease-in-out infinite;
 }
 
 .safety-stage__badge--two {
-  bottom: 34px;
+  bottom: 24px;
   animation: float-card-b 12s ease-in-out infinite;
 }
 
@@ -1729,7 +1742,6 @@ footer[id] {
 }
 
 .results-showcase__title {
-  max-width: 14ch;
   font-size: clamp(2.35rem, 4.5vw, 4.2rem);
   line-height: 0.98;
 }
@@ -3018,6 +3030,14 @@ footer[id] {
     border-radius: var(--radius-4xl);
   }
 
+  .feature-card--compact {
+    gap: 0;
+  }
+
+  .feature-card__visual {
+    margin-top: 56px;
+  }
+
   .feature-card--wide {
     grid-template-columns: 1fr;
     gap: 20px;
@@ -3043,48 +3063,52 @@ footer[id] {
   }
 
   .alts-stage {
-    min-height: 250px;
-    padding-top: 16px;
+    min-height: 0;
+    padding-top: 0;
   }
 
   .alts-stage__products {
     gap: 14px;
-    max-width: 580px;
-    padding-top: 36px;
+    max-width: 100%;
+    padding-top: 0;
   }
 
   .alt-product--low {
-    min-height: 146px;
+    --alt-image-width: 110px;
   }
 
   .alt-product--high {
-    min-height: 186px;
+    --alt-image-width: 148px;
   }
 
   .alt-product--medium {
-    min-height: 164px;
+    --alt-image-width: 126px;
   }
 
   .alt-product__image--cosrx {
-    width: min(100%, 150px);
+    width: min(100%, var(--alt-image-width, 110px));
   }
 
   .alt-product__image--cerave {
-    width: min(100%, 164px);
+    width: min(100%, var(--alt-image-width, 148px));
   }
 
   .alt-product__image--avene {
-    width: min(100%, 156px);
+    width: min(100%, var(--alt-image-width, 126px));
   }
 
   .safety-stage {
-    min-height: 248px;
-    padding-top: 10px;
+    padding-bottom: 6px;
+  }
+
+  .safety-stage__figure {
+    width: min(100%, 380px);
+    padding-left: 12px;
   }
 
   .safety-stage__texture {
-    width: min(100%, 420px);
-    height: 248px;
+    width: min(100%, 300px);
+    height: auto;
   }
 
   .safety-stage__badge {
@@ -3092,11 +3116,11 @@ footer[id] {
   }
 
   .safety-stage__badge--one {
-    top: 24px;
+    top: 64px;
   }
 
   .safety-stage__badge--two {
-    bottom: 18px;
+    bottom: 16px;
     top: auto;
   }
 
@@ -3279,9 +3303,16 @@ footer[id] {
     border-radius: var(--radius-3xl);
   }
 
+  .feature-card--compact {
+    gap: 0;
+  }
+
   .feature-card__title {
     font-size: clamp(1.78rem, 6.4vw, 2.32rem);
-    max-width: 12.4ch;
+  }
+
+  .feature-card__visual {
+    margin-top: 56px;
   }
 
   .feature-card__description {
@@ -3321,32 +3352,32 @@ footer[id] {
   }
 
   .alts-stage {
-    min-height: 270px;
-    padding-top: 14px;
+    min-height: 0;
+    padding-top: 0;
   }
 
   .alts-stage__products {
     grid-template-columns: repeat(3, minmax(82px, 1fr));
     gap: 10px;
-    padding-top: 34px;
+    padding-top: 0;
   }
 
   .alt-product--low {
-    min-height: 126px;
+    --alt-image-width: 90px;
   }
 
   .alt-product--high {
-    min-height: 158px;
+    --alt-image-width: 112px;
   }
 
   .alt-product--medium {
-    min-height: 138px;
+    --alt-image-width: 98px;
   }
 
   .alt-score {
-    min-height: 48px;
-    padding-inline: 18px;
-    font-size: 0.96rem;
+    min-height: 42px;
+    padding-inline: 12px;
+    font-size: 0.82rem;
   }
 
   .alt-score::before {
@@ -3355,21 +3386,29 @@ footer[id] {
   }
 
   .alt-product__image--cosrx {
-    width: min(100%, 112px);
+    width: min(100%, var(--alt-image-width, 90px));
   }
 
   .alt-product__image--cerave {
-    width: min(100%, 124px);
+    width: min(100%, var(--alt-image-width, 112px));
   }
 
   .alt-product__image--avene {
-    width: min(100%, 118px);
+    width: min(100%, var(--alt-image-width, 98px));
+  }
+
+  .safety-stage {
+    padding-bottom: 4px;
+  }
+
+  .safety-stage__figure {
+    width: min(100%, 308px);
+    padding-left: 0;
   }
 
   .safety-stage__texture {
-    width: calc(100% - 8px);
-    height: 220px;
-    margin-top: 8px;
+    width: min(100%, 248px);
+    margin-top: 0;
   }
 
   .safety-stage__badge {
@@ -3386,12 +3425,12 @@ footer[id] {
   }
 
   .safety-stage__badge--one {
-    top: 18px;
+    top: 48px;
   }
 
   .safety-stage__badge--two {
     top: auto;
-    bottom: 12px;
+    bottom: 8px;
   }
 
   .accent-block {
