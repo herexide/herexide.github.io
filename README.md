@@ -1,1 +1,0 @@
-# sostav-check-landing

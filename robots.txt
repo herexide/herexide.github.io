@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://herexide.github.io/sostav-check-landing/sitemap.xml
+Sitemap: https://sostav-check.ru/sitemap.xml
